@@ -1,24 +1,78 @@
 import java.util.Scanner;
+
 public class TransactionManager {
     Scanner sc = new Scanner(System.in);
-    double amount;
-    double balance;
-    public void deposit (){
-        System.out.println("Enter Deposit amount: ");
-        amount = sc.nextDouble();
-        if (amount>0){
-            balance = amount;
-        }else{
-            System.out.println("*Failed operation (Amount is negative)*");
-        }
-    }
-    public void withdraw(){
-        System.out.println("Enter Withdraw amount: ");
-        amount = sc.nextDouble();
-        if(amount<=balance){
-            balance -= amount;
-        }else{
-            System.out.println("*Failed operation - You don't have enough balance)*");
+    SavingsAccount savingsAccount = new SavingsAccount();
+    CheckingAccount checkingAccount = new CheckingAccount();
+    int choose;
+
+    public void transaction() {
+        do {
+            System.out.println("""
+                    Choose Account type:\s
+                    1 - Checking Account
+                    2 - Savings Account
+                    3 - Exit
+                    """);
+            choose = sc.nextInt();
+            switch (choose) {
+                case 1:
+
+                    System.out.println("""
+                            Choose operation type:\s
+                            1 - Deposit
+                            2 - Withdraw
+                            3 - Exit
+                            """);
+                    choose = sc.nextInt();
+                    switch (choose) {
+                        case 1:
+
+                            checkingAccount.deposit();
+                            break;
+                        case 2:
+                            checkingAccount.withdraw();
+                            break;
+                        case 3:
+                            System.out.println("Thank you for your visit!");
+                            break;
+                        default:
+                            break;
+
+                    }
+                    break;
+                case 2:
+                    System.out.println("""
+                            Choose operation type:\s
+                            1 - Deposit
+                            2 - Withdraw
+                            3 - Exit
+                            """);
+                    choose = sc.nextInt();
+                    switch (choose) {
+                        case 1:
+                            savingsAccount.deposit();
+                            break;
+                        case 2:
+                            savingsAccount.withdraw();
+                            break;
+                        case 3:
+                            System.out.println("Thank you for your visit!");
+                            break;
+                        default:
+                            break;
+
+                    }
+                    break;
+                case 3:
+                    System.out.println("Thank you for your visit!");
+                    break;
+                default:
+                    break;
+            }
+        } while(choose !=3); {
+            System.out.println("Thank you for your visit!");
         }
     }
 }
+

@@ -17,6 +17,11 @@ public abstract class BankAccount implements Transactable {
     public BankAccount(String accountNumber){
         this.accountNumber=accountNumber;
     }
+
+    public BankAccount() {
+
+    }
+
     public void deposit(){
         System.out.println("Enter Deposit amount: ");
         amount = sc.nextDouble();
